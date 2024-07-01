@@ -6,13 +6,13 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:16:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 15:28:24 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/01 15:35:38 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade)
+Bureaucrat::Bureaucrat(std::string name, unsigned int grade)
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	if (grade < 1)

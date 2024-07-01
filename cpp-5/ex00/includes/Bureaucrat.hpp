@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:17:50 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 15:28:21 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/01 15:35:35 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 class Bureaucrat {
 	public:
-		Bureaucrat(const std::string name, unsigned int grade); // canonical
+		Bureaucrat(std::string name, unsigned int grade); // canonical
 		Bureaucrat(Bureaucrat const &ref); // canonical
 		virtual ~Bureaucrat(void); // canonical
 
