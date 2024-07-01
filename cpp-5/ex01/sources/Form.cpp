@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:37:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 16:40:15 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/01 17:14:32 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,6 @@ void	Form::beSigned(Bureaucrat &ref)
 
 std::ostream	&operator<<(std::ostream &stream, Form const &ref)
 {
-	stream << "Name:" << ref.getName();
-	stream << "Status:" << ref.getStatus();
-	stream << "Sign grade:" << ref.getGradeSign();
-	stream << "Exec grade:" << ref.getGradeExec();
+	stream << "Name: " << ref.getName() << "\nStatus: " << ref.getStatus() << "\nSign grade: " << ref.getGradeSign() << "\nExec grade: " << ref.getGradeExec();
 	return (stream);
 }

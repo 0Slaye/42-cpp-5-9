@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:16:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 16:40:40 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/01 17:16:32 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	Bureaucrat::signForm(Form &ref)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << this->getName() << "couldn't sign " << ref.getName() << "because" << e.what() << std::endl;
+		std::cerr << this->getName() << " couldn't sign " << ref.getName() << "because" << e.what() << std::endl;
 		return ;
 	}
 	std::cout << this->getName() << " signed " << ref.getName() << std::endl;
