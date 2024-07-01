@@ -6,11 +6,11 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:16:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 16:18:34 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/01 16:40:40 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "commons.hpp"
 
 Bureaucrat::Bureaucrat(const std::string name, unsigned int grade)
 {

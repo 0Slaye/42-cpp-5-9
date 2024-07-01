@@ -6,13 +6,14 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:29:24 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 16:17:27 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/01 16:52:14 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "commons.hpp"
-#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form {
 	public:
