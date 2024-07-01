@@ -6,11 +6,16 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:16:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 15:35:38 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/01 17:51:04 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+Bureaucrat::Bureaucrat(void) : _name("default"), _grade(150)
+{
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade)
 {
