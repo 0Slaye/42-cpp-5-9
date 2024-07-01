@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:29:24 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 16:52:14 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/01 17:52:16 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ class Bureaucrat;
 
 class Form {
 	public:
-		Form(const std::string name, unsigned int g_sign, unsigned int g_exec); // canonical
+		Form(void); // canonical
 		Form(Form const &ref); // canonical
 		virtual ~Form(void); // canonical
 
+		Form(const std::string name, unsigned int g_sign, unsigned int g_exec);
 		Form			&operator=(Form const &ref); // canonical
 		std::string		getName(void) const;
 		bool			getStatus(void) const;

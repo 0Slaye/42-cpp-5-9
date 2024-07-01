@@ -6,11 +6,16 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:37:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 17:14:32 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/01 17:53:26 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.hpp"
+
+Form::Form(void) : _name("Default"), _is_signed(false), _g_sign(150), _g_exec(150)
+{
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
 
 Form::Form(const std::string name, unsigned int g_sign, unsigned int g_exec)
 {
