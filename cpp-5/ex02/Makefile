@@ -12,7 +12,9 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRCS_FILES	= main.cpp \
 				Bureaucrat.cpp \
-				Form.cpp
+				AForm.cpp \
+				ShrubberyCreationForm.cpp \
+				RobotomyRequestForm.cpp
 SRCS		= $(addprefix sources/, $(SRCS_FILES))
 OBJS		= $(SRCS:.cpp=.o)
 INCLS		= includes/

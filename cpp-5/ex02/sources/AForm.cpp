@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,18 +12,16 @@
 
 #include "commons.hpp"
 
-Form::Form(void) : _name("Default"), _is_signed(false), _g_sign(150), _g_exec(150)
+AForm::AForm(void) : _name("Default"), _is_signed(false), _g_sign(150), _g_exec(150)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-Form::Form(const std::string name, unsigned int g_sign, unsigned int g_exec)
+AForm::AForm(const std::string name, unsigned int g_sign, unsigned int g_exec)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	if (g_sign < 1 || g_exec < 1)
-		throw Form::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 	else if (g_sign > 150 || g_exec > 150)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	else
 	{
 		this->_name = name;
@@ -33,20 +31,17 @@ Form::Form(const std::string name, unsigned int g_sign, unsigned int g_exec)
 	}
 }
 
-Form::Form(Form const &ref)
+AForm::AForm(AForm const &ref)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	*this = ref;
 }
 
-Form::~Form(void)
+AForm::~AForm(void)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-Form	&Form::operator=(Form const &ref)
+AForm	&AForm::operator=(AForm const &ref)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	this->_name = ref.getName();
 	this->_is_signed = ref.getStatus();
 	this->_g_sign = ref.getGradeSign();
@@ -54,39 +49,35 @@ Form	&Form::operator=(Form const &ref)
 	return (*this);
 }
 
-std::string	Form::getName(void) const
+std::string	AForm::getName(void) const
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	return (this->_name);
 }
 
-bool	Form::getStatus(void) const
+bool	AForm::getStatus(void) const
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	return (this->_is_signed);
 }
 
-unsigned int	Form::getGradeSign(void) const
+unsigned int	AForm::getGradeSign(void) const
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	return (this->_g_sign);
 }
 
-unsigned int	Form::getGradeExec(void) const
+unsigned int	AForm::getGradeExec(void) const
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	return (this->_g_exec);
 }
 
-void	Form::beSigned(Bureaucrat &ref)
+void	AForm::beSigned(Bureaucrat &ref)
 {
 	if (ref.getGrade() > this->getGradeSign())
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	else
 		this->_is_signed = true;
 }
 
-std::ostream	&operator<<(std::ostream &stream, Form const &ref)
+std::ostream	&operator<<(std::ostream &stream, AForm const &ref)
 {
 	stream << "Name: " << ref.getName() << "\nStatus: " << ref.getStatus() << "\nSign grade: " << ref.getGradeSign() << "\nExec grade: " << ref.getGradeExec();
 	return (stream);

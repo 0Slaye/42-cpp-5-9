@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:16:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 17:52:00 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/02 16:25:54 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 Bureaucrat::Bureaucrat(void) : _name("default"), _grade(150)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, unsigned int grade)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
@@ -33,18 +32,16 @@ Bureaucrat::Bureaucrat(const std::string name, unsigned int grade)
 
 Bureaucrat::Bureaucrat(Bureaucrat const &ref)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	*this = ref;
 }
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &ref)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	
 	this->_name = ref.getName();
 	this->_grade = ref.getGrade();
 	return (*this);
@@ -52,32 +49,32 @@ Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &ref)
 
 std::string	Bureaucrat::getName(void) const
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	
 	return (this->_name);
 }
 
 unsigned int	Bureaucrat::getGrade(void) const
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	
 	return (this->_grade);
 }
 
 void	Bureaucrat::upgrade(void)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	
 	if (this->_grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
 	this->_grade--;
 }
 void	Bureaucrat::downgrade(void)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	
 	if (this->_grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
 	this->_grade++;
 }
 
-void	Bureaucrat::signForm(Form &ref)
+void	Bureaucrat::signForm(AForm &ref)
 {
 	try
 	{
@@ -89,6 +86,19 @@ void	Bureaucrat::signForm(Form &ref)
 		return ;
 	}
 	std::cout << this->getName() << " signed " << ref.getName() << std::endl;
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 }
 
 std::ostream	&operator<<(std::ostream &stream, Bureaucrat const &ref)

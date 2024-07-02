@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:09:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 17:18:07 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/02 16:41:33 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 int	main(void)
 {
 	{
-		Form a("Test", 100, 50);
-		Bureaucrat b("Robot1", 101);
-		Bureaucrat c("Robot2", 10);
+		RobotomyRequestForm form("result");
+		Bureaucrat ceo("Ceo", 1);
+		Bureaucrat random("Random", 136);
 
-		std::cout << a << std::endl;
-		std::cout << b << std::endl;
-		std::cout << c << std::endl;
+		std::cout << form << std::endl;
+		std::cout << ceo << std::endl;
+		std::cout << random << std::endl;
 		try
 		{
-			b.signForm(a);
-			c.signForm(a);
+			ceo.signForm(form);
+			ceo.executeForm(form);
 		}
 		catch(const std::exception& e)
 		{

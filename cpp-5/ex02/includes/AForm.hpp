@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:29:24 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 17:52:16 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/02 15:38:01 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,20 @@
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 	public:
-		Form(void); // canonical
-		Form(Form const &ref); // canonical
-		virtual ~Form(void); // canonical
+		AForm(void); // canonical
+		AForm(AForm const &ref); // canonical
+		virtual ~AForm(void); // canonical
 
-		Form(const std::string name, unsigned int g_sign, unsigned int g_exec);
-		Form			&operator=(Form const &ref); // canonical
+		AForm(const std::string name, unsigned int g_sign, unsigned int g_exec);
+		AForm			&operator=(AForm const &ref); // canonical
 		std::string		getName(void) const;
 		bool			getStatus(void) const;
 		unsigned int	getGradeSign(void) const;
 		unsigned int	getGradeExec(void) const;
 		void			beSigned(Bureaucrat &ref);
+		virtual void	execute(Bureaucrat const & executor) const = 0;
 
 		class GradeTooLowException : public std::exception {
 			public:
@@ -43,6 +44,13 @@ class Form {
 					return ("Grade too high");
 				}
 		};
+		class NotSignedException : public std::exception {
+			public:
+				virtual const char	*what() const throw()
+				{
+					return ("AForm is not signed");
+				}
+		};
 	private:
 		std::string		_name;
 		bool			_is_signed;
@@ -50,4 +58,4 @@ class Form {
 		unsigned int	_g_exec;
 };
 
-std::ostream	&operator<<(std::ostream &stream, Form const &ref);
+std::ostream	&operator<<(std::ostream &stream, AForm const &ref);

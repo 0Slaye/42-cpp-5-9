@@ -6,14 +6,14 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:17:50 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 17:51:48 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/02 15:42:51 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "commons.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	public:
@@ -27,7 +27,8 @@ class Bureaucrat {
 		unsigned int	getGrade(void) const;
 		void			upgrade(void);
 		void			downgrade(void);
-		void			signForm(Form &ref);
+		void			signForm(AForm &ref);
+		void			executeForm(AForm const & AForm);
 
 		class GradeTooLowException : public std::exception {
 			public:
