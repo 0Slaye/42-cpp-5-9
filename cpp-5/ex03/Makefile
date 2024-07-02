@@ -15,7 +15,8 @@ SRCS_FILES	= main.cpp \
 				AForm.cpp \
 				ShrubberyCreationForm.cpp \
 				RobotomyRequestForm.cpp \
-				PresidentialPardonForm.cpp
+				PresidentialPardonForm.cpp \
+				Intern.cpp
 SRCS		= $(addprefix sources/, $(SRCS_FILES))
 OBJS		= $(SRCS:.cpp=.o)
 INCLS		= includes/
