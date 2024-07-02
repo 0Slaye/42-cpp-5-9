@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:16:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/02 16:25:54 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/02 16:56:41 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,9 @@ void	Bureaucrat::executeForm(AForm const & form)
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
+		return ;
 	}
+	std::cout << this->getName() << " executed " << form.getName() << std::endl;
 	
 }
 
