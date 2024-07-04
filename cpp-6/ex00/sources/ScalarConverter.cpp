@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 15:59:28 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/04 17:41:55 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/04 17:46:46 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,14 @@ void	ScalarConverter::convert(std::string value)
 		convert >> result;
 		std::cout << "char: " << static_cast<char>(result) << std::endl;
 		std::cout << "int: " << static_cast<int>(result) << std::endl;
-		std::cout << "float: " << static_cast<float>(result) << std::endl;
-		std::cout << "double: " << static_cast<double>(result) << std::endl;
+		std::cout << "float: " << static_cast<float>(result);
+		if (static_cast<float>(static_cast<float>(result) - static_cast<float>(static_cast<int>(result))) == 0)
+			std::cout << ".0";
+		std::cout << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(result);
+		if (static_cast<double>(static_cast<double>(result) - static_cast<double>(static_cast<int>(result))) == 0)
+			std::cout << ".0";
+		std::cout << std::endl;
 	}
 	else if (is_double(value))
 	{
@@ -145,8 +151,14 @@ void	ScalarConverter::convert(std::string value)
 		convert >> result;
 		std::cout << "char: " << static_cast<char>(result) << std::endl;
 		std::cout << "int: " << static_cast<int>(result) << std::endl;
-		std::cout << "float: " << static_cast<float>(result) << std::endl;
-		std::cout << "double: " << static_cast<double>(result) << std::endl;
+		std::cout << "float: " << static_cast<float>(result);
+		if (static_cast<float>(static_cast<float>(result) - static_cast<float>(static_cast<int>(result))) == 0)
+			std::cout << ".0";
+		std::cout << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(result);
+		if (static_cast<double>(static_cast<double>(result) - static_cast<double>(static_cast<int>(result))) == 0)
+			std::cout << ".0";
+		std::cout << std::endl;
 	}
 	else if (is_int(value))
 	{
@@ -155,8 +167,14 @@ void	ScalarConverter::convert(std::string value)
 		convert >> result;
 		std::cout << "char: " << static_cast<char>(result) << std::endl;
 		std::cout << "int: " << static_cast<int>(result) << std::endl;
-		std::cout << "float: " << static_cast<float>(result) << std::endl;
-		std::cout << "double: " << static_cast<double>(result) << std::endl;
+		std::cout << "float: " << static_cast<float>(result);
+		if (static_cast<float>(static_cast<float>(result) - static_cast<float>(static_cast<int>(result))) == 0)
+			std::cout << ".0";
+		std::cout << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(result);
+		if (static_cast<double>(static_cast<double>(result) - static_cast<double>(static_cast<int>(result))) == 0)
+			std::cout << ".0";
+		std::cout << std::endl;
 	}
 	else if (value.length() == 1)
 	{
@@ -165,8 +183,14 @@ void	ScalarConverter::convert(std::string value)
 		convert >> result;
 		std::cout << "char: " << static_cast<char>(result) << std::endl;
 		std::cout << "int: " << static_cast<int>(result) << std::endl;
-		std::cout << "float: " << static_cast<float>(result) << std::endl;
-		std::cout << "double: " << static_cast<double>(result) << std::endl;
+		std::cout << "float: " << static_cast<float>(result);
+		if (static_cast<float>(static_cast<float>(result) - static_cast<float>(static_cast<int>(result))) == 0)
+			std::cout << ".0";
+		std::cout << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(result);
+		if (static_cast<double>(static_cast<double>(result) - static_cast<double>(static_cast<int>(result))) == 0)
+			std::cout << ".0";
+		std::cout << std::endl;
 	}
 	else
 	{
