@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:09:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/02 16:53:01 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/04 15:30:39 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void)
 {
 	{
-		PresidentialPardonForm form("test");
+		ShrubberyCreationForm form("test");
 		Bureaucrat ceo("Ceo", 1);
 		Bureaucrat random("Random", 136);
 

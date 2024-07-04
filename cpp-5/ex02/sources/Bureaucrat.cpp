@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:16:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/02 16:58:04 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/04 15:22:28 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,17 @@ Bureaucrat::Bureaucrat(void) : _name("default"), _grade(150)
 {
 }
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade)
+Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : _name(name)
 {
-	
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
-	{
-		this->_name = name;
 		this->_grade = grade;
-	}
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &ref)
+Bureaucrat::Bureaucrat(Bureaucrat const &ref) : _name(ref.getName()), _grade(ref.getGrade())
 {
 	*this = ref;
 }
@@ -41,15 +37,12 @@ Bureaucrat::~Bureaucrat(void)
 
 Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &ref)
 {
-	
-	this->_name = ref.getName();
 	this->_grade = ref.getGrade();
 	return (*this);
 }
 
-std::string	Bureaucrat::getName(void) const
+const std::string	Bureaucrat::getName(void) const
 {
-	
 	return (this->_name);
 }
 
@@ -61,7 +54,6 @@ unsigned int	Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::upgrade(void)
 {
-	
 	if (this->_grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
 	this->_grade--;
@@ -106,4 +98,14 @@ std::ostream	&operator<<(std::ostream &stream, Bureaucrat const &ref)
 {
 	stream << ref.getName() << ", bureaucrat grade " << ref.getGrade();
 	return (stream);
+}
+
+const char	*Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Grade too low");
+}
+
+const char	*Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Grade too high");
 }

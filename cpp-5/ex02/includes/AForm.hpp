@@ -23,7 +23,7 @@ class AForm {
 
 		AForm(const std::string name, unsigned int g_sign, unsigned int g_exec);
 		AForm			&operator=(AForm const &ref); // canonical
-		std::string		getName(void) const;
+		const std::string	getName(void) const;
 		bool			getStatus(void) const;
 		unsigned int	getGradeSign(void) const;
 		unsigned int	getGradeExec(void) const;
@@ -32,30 +32,21 @@ class AForm {
 
 		class GradeTooLowException : public std::exception {
 			public:
-				virtual const char	*what() const throw()
-				{
-					return ("Grade too low");
-				}
+				virtual const char	*what() const throw();
 		};
 		class GradeTooHighException : public std::exception {
 			public:
-				virtual const char	*what() const throw()
-				{
-					return ("Grade too high");
-				}
+				virtual const char	*what() const throw();
 		};
 		class NotSignedException : public std::exception {
 			public:
-				virtual const char	*what() const throw()
-				{
-					return ("AForm is not signed");
-				}
+				virtual const char	*what() const throw();
 		};
 	private:
-		std::string		_name;
-		bool			_is_signed;
-		unsigned int	_g_sign;
-		unsigned int	_g_exec;
+		const std::string	_name;
+		bool				_is_signed;
+		const unsigned int	_g_sign;
+		const unsigned int	_g_exec;
 };
 
 std::ostream	&operator<<(std::ostream &stream, AForm const &ref);
