@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:16:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/04 15:14:26 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/04 15:18:18 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : _name(name)
 		this->_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &ref)
+Bureaucrat::Bureaucrat(Bureaucrat const &ref) : _name(ref.getName()), _grade(ref.getGrade())
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	*this = ref;
