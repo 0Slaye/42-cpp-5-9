@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:16:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/01 17:51:04 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/04 14:49:48 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Bureaucrat::Bureaucrat(void) : _name("default"), _grade(150)
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, unsigned int grade)
+Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : _name(name)
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	if (grade < 1)
@@ -25,10 +25,7 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade)
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
-	{
-		this->_name = name;
 		this->_grade = grade;
-	}
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &ref)
@@ -45,12 +42,11 @@ Bureaucrat::~Bureaucrat(void)
 Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &ref)
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	this->_name = ref.getName();
 	this->_grade = ref.getGrade();
 	return (*this);
 }
 
-std::string	Bureaucrat::getName(void) const
+const std::string	Bureaucrat::getName(void) const
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	return (this->_name);
@@ -81,4 +77,14 @@ std::ostream	&operator<<(std::ostream &stream, Bureaucrat const &ref)
 {
 	stream << ref.getName() << ", bureaucrat grade " << ref.getGrade();
 	return (stream);
+}
+
+const char	*Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Grade too low");
+}
+
+const char	*Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Grade too high");
 }
