@@ -27,25 +27,33 @@ Intern	&Intern::operator=(Intern const &ref)
 	return (*this);
 }
 
+AForm	*makeShrubberyCreationForm(std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
+AForm	*makeRobotomyRequestForm(std::string target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+AForm	*makePresidentialPardonForm(std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
 AForm	*Intern::makeForm(std::string name, std::string target)
 {
-	if (name == "ShrubberyCreationForm")
+	AForm	*(*forms[3])(std::string target) = {&makeShrubberyCreationForm, &makeRobotomyRequestForm, &makePresidentialPardonForm};
+	std::string	names[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+
+	for (size_t i = 0; i < 3; i++)
 	{
-		AForm	*result = new ShrubberyCreationForm(target);
-		std::cout << "Intern creates " << name << std::endl;
-		return (result);
-	}
-	else if (name == "RobotomyRequestForm")
-	{
-		AForm	*result = new RobotomyRequestForm(target);
-		std::cout << "Intern creates " << name << std::endl;
-		return (result);
-	}
-	else if (name == "PresidentialPardonForm")
-	{
-		AForm	*result = new PresidentialPardonForm(target);
-		std::cout << "Intern creates " << name << std::endl;
-		return (result);
+		if (name == names[i])
+		{
+			std::cout << "Intern creates " << name << std::endl;
+			return (forms[i](target));
+		}
 	}
 	std::cerr << "Form name don't exist" << std::endl;
 	return (NULL);
