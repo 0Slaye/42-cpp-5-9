@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 15:59:28 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/04 17:46:46 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/05 15:27:52 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,13 @@ bool	is_double(std::string value)
 	return (true);
 }
 
+bool	is_printable(int value)
+{
+	if (value >= 32 && value <= 126)
+		return (true);
+	return (false);
+}
+
 void	ScalarConverter::convert(std::string value)
 {
 	if (is_float(value))
@@ -133,7 +140,10 @@ void	ScalarConverter::convert(std::string value)
 		float	result;
 		std::istringstream convert(value);
 		convert >> result;
-		std::cout << "char: " << static_cast<char>(result) << std::endl;
+		if (is_printable(static_cast<int>(result)))
+			std::cout << "char: '" << static_cast<char>(result) << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
 		std::cout << "int: " << static_cast<int>(result) << std::endl;
 		std::cout << "float: " << static_cast<float>(result);
 		if (static_cast<float>(static_cast<float>(result) - static_cast<float>(static_cast<int>(result))) == 0)
@@ -149,7 +159,10 @@ void	ScalarConverter::convert(std::string value)
 		double	result;
 		std::istringstream convert(value);
 		convert >> result;
-		std::cout << "char: " << static_cast<char>(result) << std::endl;
+		if (is_printable(static_cast<int>(result)))
+			std::cout << "char: '" << static_cast<char>(result) << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
 		std::cout << "int: " << static_cast<int>(result) << std::endl;
 		std::cout << "float: " << static_cast<float>(result);
 		if (static_cast<float>(static_cast<float>(result) - static_cast<float>(static_cast<int>(result))) == 0)
@@ -165,7 +178,10 @@ void	ScalarConverter::convert(std::string value)
 		int	result;
 		std::istringstream convert(value);
 		convert >> result;
-		std::cout << "char: " << static_cast<char>(result) << std::endl;
+		if (is_printable(static_cast<int>(result)))
+			std::cout << "char: '" << static_cast<char>(result) << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
 		std::cout << "int: " << static_cast<int>(result) << std::endl;
 		std::cout << "float: " << static_cast<float>(result);
 		if (static_cast<float>(static_cast<float>(result) - static_cast<float>(static_cast<int>(result))) == 0)
@@ -181,7 +197,10 @@ void	ScalarConverter::convert(std::string value)
 		char	result;
 		std::istringstream convert(value);
 		convert >> result;
-		std::cout << "char: " << static_cast<char>(result) << std::endl;
+		if (is_printable(static_cast<int>(result)))
+			std::cout << "char: '" << static_cast<char>(result) << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
 		std::cout << "int: " << static_cast<int>(result) << std::endl;
 		std::cout << "float: " << static_cast<float>(result);
 		if (static_cast<float>(static_cast<float>(result) - static_cast<float>(static_cast<int>(result))) == 0)
@@ -194,9 +213,22 @@ void	ScalarConverter::convert(std::string value)
 	}
 	else
 	{
-		std::cout << "char: Impossible" << std::endl;
-		std::cout << "int: Impossible" << std::endl;
-		std::cout << "float: Nanf" << std::endl;
-		std::cout << "double: Nan" << std::endl;
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		if (value == "+inff" || value == "+inf")
+		{
+			std::cout << "float: +inff" << std::endl;
+			std::cout << "double: +inf" << std::endl;
+		}
+		else if (value == "-inff" || value == "-inf")
+		{
+			std::cout << "float: -inff" << std::endl;
+			std::cout << "double: -inf" << std::endl;
+		}
+		else
+		{
+			std::cout << "float: nanf" << std::endl;
+			std::cout << "double: nan" << std::endl;
+		}
 	}
 }
