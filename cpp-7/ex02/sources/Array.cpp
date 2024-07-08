@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:13:28 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/08 16:38:20 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/08 16:40:38 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Array<T>::Array(Array const &ref)
 	Array<T>	*holder;
 
 	holder = result;
-	for (size_t i = 0; i < ref.size(); i++)
+	for (unsigned int i = 0; i < ref.size(); i++)
 	{
 		holder->next = new Array();
 		holder = holder->next;
@@ -45,7 +45,7 @@ T		&Array<T>::operator[](unsigned int index) const
 	result = this;
 	if (index > this->size())
 		throw (std::exception);
-	for (size_t i = 0; i < this->size(); i++)
+	for (unsigned int i = 0; i < this->size(); i++)
 		result = result->_next;
 	return (result);
 }
@@ -53,8 +53,8 @@ T		&Array<T>::operator[](unsigned int index) const
 template <typename T>
 unsigned int	Array<T>::size(void) const
 {
-	Array<T>	*holder;
-	size_t		result;
+	Array<T>		*holder;
+	unsigned int	result;
 
 	holder = this;
 	result = 0;

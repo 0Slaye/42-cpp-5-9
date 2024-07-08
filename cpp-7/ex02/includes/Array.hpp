@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:33:45 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/08 16:34:11 by slaye            ###   ########.fr       */
+/*   Updated: 2024/07/08 16:39:49 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ template<typename T>
 class Array {
 	public:
 		Array(void);
-		Array(Array const &ref)
+		Array(Array const &ref);
 		virtual ~Array(void);
 		Array	&operator=(Array const &ref);
 		T		&operator[](unsigned int index) const;
