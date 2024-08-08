@@ -6,7 +6,7 @@
 /*   By: uwywijas <uwywijas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:33:45 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/08 14:47:12 by uwywijas         ###   ########.fr       */
+/*   Updated: 2024/08/08 15:05:00 by uwywijas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ class Array {
 		Array<T>(unsigned int n);
 		Array<T>(Array const &ref);
 		virtual ~Array<T>(void);
-		Array	&operator=(Array const &ref);
-		T		&operator[](unsigned int index) const;
+		Array<T>	&operator=(Array const &ref);
+		T			&operator[](unsigned int index) const;
 
 		unsigned int	size(void) const;
 
@@ -43,8 +43,6 @@ Array<T>::Array(void) : _length(0), _array(new T[0])
 template <typename T>
 Array<T>::Array(unsigned int n) : _length(n), _array(new T[n])
 {
-	for (unsigned int i = 0; i < this->_length; i++)
-		this->_array[i] = 0;
 }
 
 template <typename T>
@@ -58,6 +56,13 @@ template <typename T>
 Array<T>::~Array(void)
 {
 	delete [] this->_array;
+}
+
+template <typename T>
+Array<T>	&Array<T>::operator=(Array const &ref)
+{
+	Array<T> result(ref);
+	return (result);
 }
 
 template <typename T>

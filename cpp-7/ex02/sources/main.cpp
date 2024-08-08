@@ -6,7 +6,7 @@
 /*   By: uwywijas <uwywijas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/08 14:46:12 by uwywijas         ###   ########.fr       */
+/*   Updated: 2024/08/08 15:06:32 by uwywijas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main( void )
 	unsigned int size = 10;
 	Array<int> list(size);
 	Array<int> holder(list);
+	Array<int> copy = list;
 	Array<int> tester;
 
 	list[0] = 10;
@@ -32,6 +33,12 @@ int main( void )
 	std::cout << holder[size - 1];
 	std::cout << "]" << std::endl;
 
+	std::cout << "copy: [";
+	for (unsigned int i = 0; i < size - 1; i++)
+		std::cout << copy[i] << ", ";
+	std::cout << copy[size - 1];
+	std::cout << "]" << std::endl;
+
 	try
 	{
 		std::cout << holder[9] << std::endl;
@@ -42,5 +49,11 @@ int main( void )
 		std::cout << e.what() << std::endl;
 	}
 
+	// String test
+	Array<std::string> strs(2);
+
+	strs[0] = "hello";
+	strs[1] = "world";
+	std::cout << strs[0] << " " << strs[1] << std::endl;
 	return (0);
 }
