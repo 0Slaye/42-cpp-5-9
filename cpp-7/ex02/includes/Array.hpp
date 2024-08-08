@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: uwywijas <uwywijas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:33:45 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/11 17:42:57 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/08 14:47:12 by uwywijas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ class Array {
 		T		&operator[](unsigned int index) const;
 
 		unsigned int	size(void) const;
+
+		class IndexOutOfBounds : public std::exception {
+			public:
+				virtual const char *what() const throw();
+		};
 
 	private:
 		unsigned int	_length;
@@ -52,16 +57,16 @@ Array<T>::Array(Array const &ref) : _length(ref._length), _array(new T[ref._leng
 template <typename T>
 Array<T>::~Array(void)
 {
-	if (this->_length == 0)
-		return ;
 	delete [] this->_array;
 }
 
 template <typename T>
 T	&Array<T>::operator[](unsigned int index) const
 {
-	if (index > this->_length)
-		throw std::exception();
+	if (this->_length == 0)
+		throw Array::IndexOutOfBounds();
+	if (index > this->_length - 1)
+		throw Array::IndexOutOfBounds();
 	return (this->_array[index]);
 }
 
@@ -69,4 +74,10 @@ template <typename T>
 unsigned int	Array<T>::size(void) const
 {
 	return (this->_length);
+}
+
+template<typename T>
+const char *Array<T>::IndexOutOfBounds::what() const throw()
+{
+	return ("Index out of bounds");
 }

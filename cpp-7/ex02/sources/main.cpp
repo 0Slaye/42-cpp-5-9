@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: uwywijas <uwywijas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/11 17:45:14 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/08 14:46:12 by uwywijas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main( void )
 	unsigned int size = 10;
 	Array<int> list(size);
 	Array<int> holder(list);
+	Array<int> tester;
 
 	list[0] = 10;
 	std::cout << "list: [";
@@ -30,6 +31,16 @@ int main( void )
 		std::cout << holder[i] << ", ";
 	std::cout << holder[size - 1];
 	std::cout << "]" << std::endl;
+
+	try
+	{
+		std::cout << holder[9] << std::endl;
+		std::cout << tester[10] << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
 	return (0);
 }
