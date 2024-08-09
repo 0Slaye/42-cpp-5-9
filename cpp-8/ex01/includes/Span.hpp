@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 09:41:00 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/09 10:17:30 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/09 11:16:07 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ class Span {
 		void			addNumber(int number);
 		unsigned int	shortestSpan(void) const;
 		unsigned int	longestSpan(void) const;
+
+		template <typename T>
+		void			addNumber(T begin, T end)
+		{
+			if (_container.size() + std::distance(begin, end) > _n)
+				throw Span::CapacityException();
+			_container.insert(_container.end(), begin, end);
+		}
 
 		class CapacityException : public std::exception {
 			public:
