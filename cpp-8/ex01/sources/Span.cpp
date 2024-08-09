@@ -31,6 +31,35 @@ void	Span::addNumber(int number)
 		throw Span::CapacityException();
 }
 
+unsigned int	Span::shortestSpan(void) const
+{
+	std::vector<int>	holder = this->_container;
+	int					result;
+
+	if (this->_container.size() < 2)
+		throw Span::DistanceException();
+	std::sort(holder.begin(), holder.end());
+	result = holder[1] - holder[0];
+	for (unsigned int i = 1; i < holder.size() - 1; i++)
+	{
+		if (holder[i + 1] - holder[i] < result)
+			result = holder[i + 1] - holder[i];
+	}
+	return (result);
+}
+
+unsigned int	Span::longestSpan(void) const
+{
+	unsigned int	max;
+	unsigned int	min;
+
+	if (this->_container.size() < 2)
+		throw Span::DistanceException();
+	max = *std::max_element(this->_container.begin(), this->_container.end());
+	min = *std::min_element(this->_container.begin(), this->_container.end());
+	return (max - min);
+}
+
 const char	*Span::CapacityException::what() const throw()
 {
 	return ("Span already full.");

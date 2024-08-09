@@ -6,13 +6,14 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 09:41:00 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/09 10:14:01 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/09 10:17:30 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 class Span {
 	public:
