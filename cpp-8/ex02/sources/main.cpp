@@ -3,33 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: uwywijas <uwywijas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/09 11:20:13 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/12 15:19:55 by uwywijas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Span.hpp"
+#include <list>
+#include "MutantStack.hpp"
+
+void	std_list(void)
+{
+	std::list<int> list;
+
+	list.push_back(5);
+	list.push_back(17);
+	std::cout << list.back() << std::endl;
+	list.pop_back();
+	std::cout << list.size() << std::endl;
+	list.push_back(3);
+	list.push_back(5);
+	list.push_back(737);
+	list.push_back(0);
+	std::list<int>::iterator it = list.begin();
+	std::list<int>::iterator ite = list.end();
+	++it;
+	--it;
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+}
 
 int main()
 {
-	Span sp = Span(105);
-	std::vector<int> holder(100, 10);
+	std::cout << "MutantStack:" << std::endl;
+	MutantStack<int> mstack;
 
-	try {
-		// 3, 6, 9, 11, 17
-		sp.addNumber(6);
-		sp.addNumber(3);
-		sp.addNumber(17);
-		sp.addNumber(9);
-		sp.addNumber(11);
-		sp.addNumber(holder.begin(), holder.end());
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << mstack.size() << std::endl;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	mstack.push(0);
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
 	}
-	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
+	std::stack<int> s(mstack);
+	std::cout << "List:" << std::endl;
+	std_list();
 	return (0);
 }

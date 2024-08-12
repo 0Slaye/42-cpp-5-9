@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: uwywijas <uwywijas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 11:26:27 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/09 12:12:00 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/12 15:12:15 by uwywijas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,35 @@ class MutantStack : public std::stack<T> {
 
 		MutantStack<T>	&operator=(const MutantStack &reference);
 
-		class iterator;
-		iterator begin();
-		iterator end();
-		const iterator begin() const;
-		const iterator end() const;
+		typedef typename	std::stack<T> stack;
+		typedef typename	stack::container_type::iterator iterator;
+		iterator	begin() {
+			return (this->c.begin());
+		}
+		iterator	end() {
+			return (this->c.end());
+		}
 };
 
 template <typename T>
-typename MutantStack<T>::iterator MutantStack<T>::begin() {
-	// Implementation
+MutantStack<T>::MutantStack(void) : stack()
+{
+}
+
+template <typename T>
+MutantStack<T>::MutantStack(const MutantStack &reference) : stack(reference)
+{
+}
+
+template <typename T>
+MutantStack<T>::~MutantStack(void)
+{
+}
+
+template <typename T>
+MutantStack<T>	&MutantStack<T>::operator=(const MutantStack &reference)
+{
+	if (*this != reference)
+		*this = reference;
+	return (*this);
 }
