@@ -2,7 +2,7 @@
 #                                     CONFIG                                   #
 ################################################################################
 
-NAME = exec
+NAME = btc
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
