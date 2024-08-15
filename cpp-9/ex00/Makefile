@@ -10,7 +10,8 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-SRCS_FILES	= main.cpp
+SRCS_FILES	= main.cpp \
+				utils.cpp
 SRCS		= $(addprefix sources/, $(SRCS_FILES))
 OBJS		= $(SRCS:.cpp=.o)
 INCLS		= includes/
