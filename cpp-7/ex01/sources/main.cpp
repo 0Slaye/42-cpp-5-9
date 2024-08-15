@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/07/08 15:32:14 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/15 14:16:49 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	printer(std::string value)
 }
 
 int main( void ) {
-	std::string	array[5] = {"Hello", "this", "is", "a", "test"};
+	std::string	array[2] = {"Hello", "world"};
 
-	iter(array, 5, &printer);
+	iter(array, 2, &printer);
 	std::cout << std::endl;
 	return (0);
 }
