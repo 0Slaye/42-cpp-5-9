@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uwywijas <uwywijas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/14 15:38:43 by uwywijas         ###   ########.fr       */
+/*   Updated: 2024/08/15 14:35:33 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,19 @@ std::map<std::string, double>	parse_csv(char *path) {
 	std::ifstream					file;
 	std::string						line;
 	std::map<std::string, double>	map;
+	bool							is_first = true;
+	unsigned int					comma_index = 0;
 
 	file.open(path);
 	if (!file.good())
 		throw std::exception();
 	while (getline(file, line)) {
-		map[line] = 0;
+		if (is_first) {
+			is_first = false;
+			continue ;
+		}
+		comma_index = line.find(',');
+		map[line.substr(0, comma_index)] = atof(line.substr(comma_index + 1, line.length()).c_str());
 	}
 	file.close();
 	return (map);
@@ -35,10 +42,5 @@ int	main(int argc, char **argv) {
 		return (1);
 	}
 	map = parse_csv(argv[1]);
-	std::map<std::string, double>::iterator it = map.begin();
-	while (it != map.end()) {
-		std::cout << it->first << ": " << it->second << std::endl;
-		it++;
-	}
 	return (0);
 }
