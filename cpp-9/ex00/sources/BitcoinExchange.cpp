@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 12:58:44 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/16 13:49:11 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/16 13:51:20 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void	BitcoinExchange::exchange(char *input)
 				std::cerr << DEBUG_NAME << ERR_BAD_INPUT << line << std::endl;
 					continue ;
 			}
-			// std::cout << year << " " << month << " " << day << std::endl;
 			if (year < 2009 || (year == 2009 && month <= 1 && day <= 2)) {
 				std::cerr << DEBUG_NAME << ERR_BAD_INPUT << line << std::endl;
 					continue ;
