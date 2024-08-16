@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:12:24 by uwywijas          #+#    #+#             */
-/*   Updated: 2024/08/16 14:28:49 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/16 15:15:02 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,4 @@
 #define ERR_FILE "error: input file cannot be read."
 #define ERR_FORMAT "error: input file is not well formated."
 #define ERR_BAD_INPUT "error: bad input => "
+#define ERR_NOT_FOUND "error: date not found in database."

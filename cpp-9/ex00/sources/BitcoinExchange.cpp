@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 12:58:44 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/16 14:35:10 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/16 15:16:09 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,19 @@ void	BitcoinExchange::exchange(char *input)
 				std::cerr << DEBUG_NAME << ERR_BAD_INPUT << line << std::endl;
 					continue ;
 			}
-			std::map<std::string, double>::iterator it = (this->_map_db).find(format_int_date(year, month, day));
-			if (it != (this->_map_db).end())
-				std::cerr << DEBUG_NAME << line.substr(0, 11) << " => " << value << " = " << (value * it->second) << std::endl;
+			std::map<std::string, double>::iterator it = (this->_map_db).lower_bound(format_int_date(year, month, day));
+			if (it != (this->_map_db).end()) {
+				if (it->first != format_int_date(year, month, day))
+					it--;
+				std::cout << DEBUG_NAME << line.substr(0, 11) << " => " << value << " = " << (value * it->second) << std::endl;
+			}
+			else if (it == (this->_map_db).end()) {
+				it--;
+				std::cout << DEBUG_NAME << line.substr(0, 11) << " => " << value << " = " << (value * it->second) << std::endl;
+			}
+			else {
+				std::cerr << DEBUG_NAME << ERR_NOT_FOUND << line << std::endl;
+			}
 		}
 	}
 	file.close();
