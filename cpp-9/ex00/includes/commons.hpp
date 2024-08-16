@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:12:24 by uwywijas          #+#    #+#             */
-/*   Updated: 2024/08/16 13:26:15 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/16 14:28:49 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <cstdlib>
 #include <map>
+#include <sstream>
 #include "BitcoinExchange.hpp"
 
 #define DATA_PATH "utils/data.csv"

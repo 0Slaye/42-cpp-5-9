@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 12:58:44 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/16 13:51:20 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/16 14:35:10 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,20 @@ BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &reference)
 	return (*this);
 }
 
+std::string	format_int_date(int year, int month, int day)
+{
+	std::ostringstream result;
+
+	result << year << "-";
+	if (month < 10)
+		result << "0";
+	result << month << "-";
+	if (day < 10)
+		result << "0";
+	result << day;
+	return (result.str());
+}
+
 void	BitcoinExchange::exchange(char *input)
 {
 	std::ifstream	file;
@@ -54,6 +68,7 @@ void	BitcoinExchange::exchange(char *input)
 	int				month;
 	int				day;
 	float			value;
+	char			extra;
 	int				months_with_31_days[7] = {1, 3, 5, 7, 8, 10, 12};
 	bool			is_months_with_31_days = false;
 
@@ -64,7 +79,7 @@ void	BitcoinExchange::exchange(char *input)
 	if (line != "date | value")
 		throw std::runtime_error(ERR_FORMAT);
 	while (getline(file, line)) {
-		if (!(sscanf((line.c_str()), "%d-%d-%d | %f", &year, &month, &day, &value) == 4))
+		if (!(sscanf((line.c_str()), "%d-%d-%d | %f%s", &year, &month, &day, &value, &extra) == 4))
 			std::cerr << DEBUG_NAME << ERR_BAD_INPUT << line << std::endl;
 		else {
 			if (month > 12) {
@@ -99,6 +114,9 @@ void	BitcoinExchange::exchange(char *input)
 				std::cerr << DEBUG_NAME << ERR_BAD_INPUT << line << std::endl;
 					continue ;
 			}
+			std::map<std::string, double>::iterator it = (this->_map_db).find(format_int_date(year, month, day));
+			if (it != (this->_map_db).end())
+				std::cerr << DEBUG_NAME << line.substr(0, 11) << " => " << value << " = " << (value * it->second) << std::endl;
 		}
 	}
 	file.close();
