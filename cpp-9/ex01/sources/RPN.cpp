@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:30:37 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/16 15:36:25 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/16 15:38:48 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ RPN	&RPN::operator=(const RPN &reference)
 
 float	RPN::calculate(char *value)
 {
-	float	result;
+	std::stack<int>	stack;
+	float			result;
 
 	result = 0;
 	(void) value;

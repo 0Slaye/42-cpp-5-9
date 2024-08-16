@@ -6,12 +6,13 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:12:24 by uwywijas          #+#    #+#             */
-/*   Updated: 2024/08/16 15:34:45 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/16 15:38:00 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+#include <stack>
 #include "RPN.hpp"
 
 #define DEBUG_NAME "RPN: "

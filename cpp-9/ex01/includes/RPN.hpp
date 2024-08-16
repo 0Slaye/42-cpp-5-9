@@ -6,11 +6,12 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:30:24 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/16 15:35:01 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/16 15:38:45 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include "commons.hpp"
 
 class RPN {
 	public:
