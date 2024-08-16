@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 15:12:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/16 15:35:16 by slaye            ###   ########.fr       */
+/*   Created: 2024/08/16 15:30:24 by slaye             #+#    #+#             */
+/*   Updated: 2024/08/16 15:35:01 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "commons.hpp"
+#pragma once
 
-int	main(int argc, char **argv) {
-	if (argc != 2) {
-		std::cerr << DEBUG_NAME << ERR_ARG << std::endl;
-		return (1);
-	}
-	std::cout << RPN::calculate(argv[1]) << std::endl;
-	return (0);
-}
+class RPN {
+	public:
+		static float	calculate(char *value);
+
+	private:
+		RPN(void);
+		RPN(const RPN &reference);
+		virtual ~RPN(void);
+
+		RPN	&operator=(const RPN &reference);
+};
