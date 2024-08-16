@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commons.hpp                                        :+:      :+:    :+:   */
+/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 15:12:24 by uwywijas          #+#    #+#             */
-/*   Updated: 2024/08/16 13:26:15 by slaye            ###   ########.fr       */
+/*   Created: 2024/08/16 12:58:25 by slaye             #+#    #+#             */
+/*   Updated: 2024/08/16 13:16:36 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <cstdlib>
-#include <map>
-#include "BitcoinExchange.hpp"
+#include "commons.hpp"
 
-#define DATA_PATH "utils/data.csv"
-#define DEBUG_NAME "btc: "
-#define ERR_ARG "error: wrong number of arguments."
-#define ERR_FILE "error: input file cannot be read."
-#define ERR_FORMAT "error: input file is not well formated."
-#define ERR_BAD_INPUT "error: bad input => "
+class BitcoinExchange {
+	public:
+		BitcoinExchange(void);
+		BitcoinExchange(const BitcoinExchange &reference);
+		virtual ~BitcoinExchange(void);
+
+		BitcoinExchange	&operator=(const BitcoinExchange &reference);
+
+		void	exchange(char *input);
+
+	private:
+		std::string						_path_db;
+		std::map<std::string, double>	_map_db;
+};
