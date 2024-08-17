@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:30:24 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/16 15:38:45 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/17 15:44:12 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 class RPN {
 	public:
-		static float	calculate(char *value);
+		static float	calculate(std::string value);
 
 	private:
 		RPN(void);
