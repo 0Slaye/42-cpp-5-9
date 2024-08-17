@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/17 15:59:23 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/17 16:08:08 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,25 @@ std::string			operations = "+-/*";
 bool	is_format(std::string value)
 {
 	unsigned int	spaceless_length = 0;
+	unsigned int	digits = 0;
+	unsigned int	operations = 0;
 
 	for (unsigned int i = 0; i < value.length(); i++) {
 		if (!isdigit(value[i]) && value[i] != '+' && value[i] != ' ' && value[i] != '-' && value[i] != '/' && value[i] != '*')
 			return (false);
+		if (value[i] == '+' || value[i] == '-' || value[i] == '/' || value[i] == '*')
+			operations++;
+		if (isdigit(value[i]))
+			digits++;
 	}
 	for (unsigned int i = 0; i < value.length(); i++) {
 		if (value[i] == ' ')
 			spaceless_length++;
 	}
 	if (value.length() - spaceless_length < 3)
+		return (false);
+	std::cout << digits << " : " << operations << std::endl;
+	if (digits - 1 != operations)
 		return (false);
 	return (true);
 }
