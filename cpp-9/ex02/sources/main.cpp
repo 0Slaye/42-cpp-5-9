@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/18 14:44:54 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/18 15:50:33 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ bool	is_format(std::vector<std::string> strs)
 	return (true);
 }
 
-std::vector<int>	get_v_numbers(std::vector<std::string> strs)
+std::vector<unsigned int>	get_v_numbers(std::vector<std::string> strs)
 {
 	std::vector<std::string>::iterator	it;
-	std::vector<int> 					result;
+	std::vector<unsigned int> 					result;
 
 	it = strs.begin() + 1;
 	while (it != strs.end()) {
@@ -42,7 +42,7 @@ std::vector<int>	get_v_numbers(std::vector<std::string> strs)
 
 int	main(int argc, char **argv) {
 	std::vector<std::string> 	strs(argv, argv + argc);
-	std::vector<int> 			v_numbers;
+	std::vector<unsigned int> 			v_numbers;
 
 	if (argc < 2) {
 		std::cerr << DEBUG_NAME << ERR_ARG <<std::endl;
