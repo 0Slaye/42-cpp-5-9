@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:11:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/18 17:13:52 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/18 17:18:44 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ std::vector<unsigned int>	PmergeMe::vector_merge(std::vector<unsigned int> *doub
 
 	if (length == 1) {
 		std::vector<unsigned int>::iterator	left_it = doubles[start].begin();
-		while (left_it != doubles[start].end()) {
+		while (left_it != doubles[start].end() && doubles[end].size() != 0) {
 			std::vector<unsigned int>::iterator	right_it = doubles[end].begin();
 			while (right_it != doubles[end].end()) {
 				if (*left_it < *right_it) {
@@ -70,7 +70,7 @@ std::vector<unsigned int>	PmergeMe::vector_merge(std::vector<unsigned int> *doub
 	else {
 		std::vector<unsigned int> holder = vector_merge(doubles, start + 1, end);
 		std::vector<unsigned int>::iterator	left_it = doubles[start].begin();
-		while (left_it != doubles[start].end()) {
+		while (left_it != doubles[start].end() && holder.size() != 0) {
 			std::vector<unsigned int>::iterator	right_it = holder.begin();
 			while (right_it != holder.end()) {
 				if (*left_it < *right_it) {
