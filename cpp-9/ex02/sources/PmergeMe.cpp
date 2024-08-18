@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:11:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/18 14:26:35 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/18 14:45:14 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ PmergeMe	&PmergeMe::operator=(const PmergeMe &reference)
 	return (*this);
 }
 
-void	PmergeMe::vector_sort(std::string value)
+void	PmergeMe::vector_sort(std::vector<int> numbers)
 {
-	std::cout << value << std::endl;
+	(void) numbers;
 }

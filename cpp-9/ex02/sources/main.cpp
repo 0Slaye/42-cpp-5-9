@@ -6,20 +6,53 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/18 14:26:56 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/18 14:44:54 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.hpp"
 
+bool	is_format(std::vector<std::string> strs)
+{
+	std::vector<std::string>::iterator	it;
+
+	it = strs.begin() + 1;
+	while (it != strs.end()) {
+		for (unsigned int i = 0; i < it->length(); i++) {
+			if (!isdigit((*it)[i]))
+				return (false);
+		}
+		it++;
+	}
+	return (true);
+}
+
+std::vector<int>	get_v_numbers(std::vector<std::string> strs)
+{
+	std::vector<std::string>::iterator	it;
+	std::vector<int> 					result;
+
+	it = strs.begin() + 1;
+	while (it != strs.end()) {
+		result.push_back(std::atoi((*it).c_str()));
+		it++;
+	}
+	return (result);
+}
+
 int	main(int argc, char **argv) {
-	std::string	numbers;
+	std::vector<std::string> 	strs(argv, argv + argc);
+	std::vector<int> 			v_numbers;
 
 	if (argc < 2) {
 		std::cerr << DEBUG_NAME << ERR_ARG <<std::endl;
-		return (1); 
+		return (1);
 	}
-	numbers = argv[1];
-	PmergeMe::vector_sort(numbers);
+	if (!is_format(strs)) {
+		std::cerr << DEBUG_NAME << ERR_FORMAT <<std::endl;
+		return (2);
+	}
+	v_numbers = get_v_numbers(strs);
+	PmergeMe::vector_sort(v_numbers);
 	return (0);
 }
