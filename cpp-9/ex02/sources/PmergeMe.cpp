@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:11:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/18 17:10:19 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/18 17:13:52 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ std::vector<unsigned int>	PmergeMe::vector_merge(std::vector<unsigned int> *doub
 			}
 		}
 		else if (doubles[end].size() != 0) {
-			std::cout << "end size != 0" << std::endl;
 			std::vector<unsigned int>::iterator	it = doubles[end].begin();
 			while (it != doubles[end].end()) {
 				result.push_back(*it);
@@ -93,7 +92,6 @@ std::vector<unsigned int>	PmergeMe::vector_merge(std::vector<unsigned int> *doub
 			}
 		}
 		else if (holder.size() != 0) {
-			std::cout << "end size != 0" << std::endl;
 			std::vector<unsigned int>::iterator	it = holder.begin();
 			while (it != holder.end()) {
 				result.push_back(*it);
@@ -133,51 +131,14 @@ void	PmergeMe::vector_sort(std::vector<unsigned int> numbers)
 		}
 	}
 
-	// printing pairs
-	std::cout << "(";
-	for (unsigned int i = 0; i < length; i++) {
-		std::vector<unsigned int>::iterator itt = doubles[i].begin();
-		std::cout << "(";
-		while (itt != doubles[i].end()) {
-			std::cout << *itt;
-			if (!(itt + 1 == doubles[i].end()))
-				std::cout << ",";
-			itt++;
-		}
-		std::cout << ")";
-		if (i + 1 < length)
-			std::cout << ", ";
-	}
-	std::cout << ")" << std::endl;
-
 	// first half merge (right half)
-	unsigned int				start = (length / 2) - 1;
+	unsigned int				start = 0;
 	unsigned int				end = length - 1;
-	std::cout << "length: " << length << std::endl;
-	std::cout << "start: " << start << std::endl;
-	std::cout << "end: " << end << std::endl;
-	std::vector<unsigned int>	first_half = vector_merge(doubles, start, end);
-	std::vector<unsigned int>::iterator ith = first_half.begin();
-	while (ith != first_half.end()) {
-		std::cout << *ith << ", ";
-		ith++;
+	std::vector<unsigned int>	result = vector_merge(doubles, start, end);
+	std::vector<unsigned int>::iterator itr = result.begin();
+	while (itr != result.end()) {
+		std::cout << *itr << ", ";
+		itr++;
 	}
 	std::cout << std::endl;
 }
-
-// printing pairs
-// std::cout << "(";
-// for (unsigned int i = 0; i < length; i++) {
-// 	std::vector<unsigned int>::iterator itt = doubles[i].begin();
-// 	std::cout << "(";
-// 	while (itt != doubles[i].end()) {
-// 		std::cout << *itt;
-// 		if (!(itt + 1 == doubles[i].end()))
-// 			std::cout << ",";
-// 		itt++;
-// 	}
-// 	std::cout << ")";
-// 	if (i + 1 < length)
-// 		std::cout << ", ";
-// }
-// std::cout << ")" << std::endl;
