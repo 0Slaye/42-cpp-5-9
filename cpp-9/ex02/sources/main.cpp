@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/19 14:33:02 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/19 14:43:16 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int argc, char **argv) {
 		return (2);
 	}
 	v_numbers = get_v_numbers(strs);
-	//PmergeMe::vector_sort(v_numbers);
+	PmergeMe::vector_sort(v_numbers);
 	PmergeMe::list_sort(v_numbers);
 	return (0);
 }

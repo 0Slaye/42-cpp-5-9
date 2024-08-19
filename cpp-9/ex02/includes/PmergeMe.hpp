@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:10:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/19 14:12:21 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/19 14:35:56 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ class PmergeMe {
 		static void	vector_sort(std::vector<unsigned int> numbers);
 		static std::vector<unsigned int>	vector_merge(std::vector<unsigned int> *doubles, unsigned int start, unsigned int end);
 		static void	list_sort(std::vector<unsigned int> numbers);
+		static std::list<unsigned int>	list_merge(std::list<unsigned int> *doubles, unsigned int start, unsigned int end);
 
 	private:
 		PmergeMe(void);
