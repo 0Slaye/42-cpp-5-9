@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:11:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/18 17:21:03 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/19 14:34:15 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	PmergeMe::vector_sort(std::vector<unsigned int> numbers)
 		}
 	}
 
-	// first half merge (right half)
+	// merge values (right to left)
 	unsigned int				start = 0;
 	unsigned int				end = length - 1;
 	std::vector<unsigned int>	result = vector_merge(doubles, start, end);
@@ -141,4 +141,53 @@ void	PmergeMe::vector_sort(std::vector<unsigned int> numbers)
 		itr++;
 	}
 	std::cout << std::endl;
+}
+
+void	PmergeMe::list_sort(std::vector<unsigned int> numbers)
+{
+	std::list<unsigned int>				l_numbers(numbers.begin(), numbers.end());
+	std::list<unsigned int>::iterator	it = l_numbers.begin();
+	unsigned int						length = (l_numbers.size() % 2) ? (l_numbers.size() / 2 + 1) : (l_numbers.size() / 2);
+	std::list<unsigned int>				doubles[length];
+	unsigned int						counter = 0;
+	unsigned int						holder;
+
+	// generating pairs
+	while (std::distance(it, l_numbers.end()) > 1) {
+		doubles[counter].push_back(*it);
+		it++;
+		doubles[counter].push_back(*it);
+		it++;
+		counter++;
+	}
+	if (l_numbers.size() % 2 != 0)
+		doubles[counter].push_back(*it);
+
+	// sorting pairs
+	for (unsigned int i = 0; i < length; i++) {
+		if (doubles[i].size() == 1)
+			continue ;
+		std::list<unsigned int>::iterator first = doubles[i].begin();
+		std::list<unsigned int>::iterator second = doubles[i].begin()++;
+		if (*first > *second) {
+			holder = *first;
+			*first = *second;
+			*second = holder;
+		}
+	}
+
+	// printing pairs
+	std::cout << "(";
+	for (unsigned int i = 0; i < length; i++) {
+		std::list<unsigned int>::iterator itt = doubles[i].begin();
+		std::cout << "(";
+		while (itt != doubles[i].end()) {
+			std::cout << *itt << ", ";
+			itt++;
+		}
+		std::cout << ")";
+		if (i + 1 < length)
+			std::cout << ", ";
+	}
+	std::cout << ")" << std::endl;
 }
