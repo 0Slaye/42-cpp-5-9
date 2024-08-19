@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/19 14:43:16 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/19 15:02:14 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,21 @@ int	main(int argc, char **argv) {
 		return (2);
 	}
 	v_numbers = get_v_numbers(strs);
+	std::vector<unsigned int>::iterator	it = v_numbers.begin();
+	std::cout << "before: ";
+	while (it != v_numbers.end()) {
+		std::cout << *it;
+		if (it + 1 != v_numbers.end())
+			std::cout << ", ";
+		it++;
+	}
+	std::cout << std::endl << "after: ";
+	std::clock_t	clock_0 = std::clock();
 	PmergeMe::vector_sort(v_numbers);
+	std::clock_t	clock_1 = std::clock();
 	PmergeMe::list_sort(v_numbers);
+	std::clock_t	clock_2 = std::clock();
+	std::cout << "Time to process a range of " << v_numbers.size() << " with std::vector: " << ((clock_1 - clock_0) * 1000) / CLOCKS_PER_SEC << "ms" << std::endl;
+	std::cout << "Time to process a range of " << v_numbers.size() << " with std::list: " << ((clock_2 - clock_1) * 1000) / CLOCKS_PER_SEC << "ms" << std::endl;
 	return (0);
 }

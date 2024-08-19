@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:11:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/08/19 14:43:27 by slaye            ###   ########.fr       */
+/*   Updated: 2024/08/19 14:48:02 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,9 @@ void	PmergeMe::vector_sort(std::vector<unsigned int> numbers)
 	std::vector<unsigned int>	result = vector_merge(doubles, start, end);
 	std::vector<unsigned int>::iterator itr = result.begin();
 	while (itr != result.end()) {
-		std::cout << *itr << ", ";
+		std::cout << *itr;
+		if (itr + 1 != result.end())
+			std::cout << ", ";
 		itr++;
 	}
 	std::cout << std::endl;
@@ -252,10 +254,4 @@ void	PmergeMe::list_sort(std::vector<unsigned int> numbers)
 	unsigned int				start = 0;
 	unsigned int				end = length - 1;
 	std::list<unsigned int>		result = list_merge(doubles, start, end);
-	std::list<unsigned int>::iterator itr = result.begin();
-	while (itr != result.end()) {
-		std::cout << *itr << ", ";
-		itr++;
-	}
-	std::cout << std::endl;
 }
